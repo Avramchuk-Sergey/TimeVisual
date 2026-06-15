@@ -36,3 +36,4 @@ function updateClock() {
 
     updateHourglass(progress);
 }
+// Привет, Авусик!!!

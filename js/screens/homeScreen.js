@@ -1,4 +1,12 @@
 function renderHomeScreen() {
+    const activePeriod = getActivePeriod();
+
+    const activePeriodButton = activePeriod
+        ? `<button class="main-button" onclick="showActivePeriodScreen(getActivePeriod())">
+                Активный период
+           </button>`
+        : "";
+
     return `
         <section class="screen app">
             <div id="clock" class="clock">00:00:00</div>
@@ -25,6 +33,8 @@ function renderHomeScreen() {
                     <circle cx="60" cy="116" r="2" class="sand-svg" />
                 </svg>
             </div>
+
+            ${activePeriodButton}
         </section>
     `;
 }

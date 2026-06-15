@@ -45,6 +45,13 @@ function initNewPeriodScreen() {
             return;
         }
 
-        showActivePeriodScreen(selectedDate, secondsLeft);
+        const period = {
+            title: "Новый период",
+            endDate: selectedValue,
+            createdAt: new Date().toISOString()
+        };
+
+        saveActivePeriod(period);
+        showActivePeriodScreen(period);
     });
 }

@@ -1,54 +1,55 @@
 let countdownInterval = null;
-let targetDateTime = null;
 
-function renderActivePeriodScreen(secondsLeft) {
+function renderActivePeriodScreen(period) {
     return `
         <section class="screen-content">
-            <div id="clock" class="clock"></div>
+            <div class="clock" id="clock">00:00:00</div>
 
-            <div class="period-box">
-                <div class="period-label">До конца периода осталось:</div>
-                <div id="countdown" class="countdown">${secondsLeft}</div>
-                <div class="period-label">секунд</div>
-            </div>
+            <p>До конца периода осталось:</p>
 
-            <button class="main-button">Добавить задачу</button>
+            <div class="countdown" id="countdown">...</div>
+
+            <p>секунд</p>
+
+            <button class="main-button">
+                Добавить задачу
+            </button>
+
             <button class="back-button" onclick="showScreen('home')">Назад</button>
         </section>
     `;
 }
 
-function initActivePeriodScreen(targetTime) {
-    targetDateTime = targetTime;
-
+function initActivePeriodScreen(period) {
     startClock();
+
+    const countdownElement = document.getElementById("countdown");
+
+    function updateCountdown() {
+        const targetDate = new Date(period.endDate);
+        const now = new Date();
+
+        const difference = targetDate - now;
+        const secondsLeft = Math.floor(difference / 1000);
+
+        if (secondsLeft <= 0) {
+            countdownElement.textContent = "0";
+            stopCountdown();
+            clearActivePeriod();
+            return;
+        }
+
+        countdownElement.textContent = secondsLeft;
+    }
 
     updateCountdown();
 
     countdownInterval = setInterval(updateCountdown, 1000);
 }
 
-function updateCountdown() {
-    const countdownElement = document.getElementById("countdown");
-
-    if (!countdownElement || !targetDateTime) {
-        return;
-    }
-
-    const now = new Date();
-    const difference = targetDateTime - now;
-
-    let secondsLeft = Math.floor(difference / 1000);
-
-    if (secondsLeft <= 0) {
-        secondsLeft = 0;
-        clearInterval(countdownInterval);
-    }
-
-    countdownElement.textContent = secondsLeft;
-}
-
 function stopCountdown() {
-    clearInterval(countdownInterval);
-    countdownInterval = null;
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+        countdownInterval = null;
+    }
 }

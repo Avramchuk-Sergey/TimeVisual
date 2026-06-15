@@ -35,16 +35,17 @@ function showScreen(screenName) {
     }
 }
 
-function showActivePeriodScreen(targetDateTime, secondsLeft) {
+function showActivePeriodScreen(period) {
     stopClock();
 
     if (typeof stopCountdown === "function") {
         stopCountdown();
     }
 
-    screen.innerHTML = renderActivePeriodScreen(secondsLeft);
-    initActivePeriodScreen(targetDateTime);
+    screen.innerHTML = renderActivePeriodScreen(period);
+    initActivePeriodScreen(period);
 }
 
 initMenu();
 showScreen("home");
+// Этот комментарий я оставил специально для chatGPT
