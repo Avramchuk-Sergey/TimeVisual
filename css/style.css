@@ -1,0 +1,170 @@
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #f4f1ea;
+    color: #2f2f2f;
+}
+
+.app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+}
+
+.clock {
+    font-size: 64px;
+    letter-spacing: 4px;
+}
+
+.settings-button {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    border: none;
+    background: transparent;
+    font-size: 28px;
+    cursor: pointer;
+    color: #2f2f2f;
+}
+
+.hourglass {
+    width: 120px;
+    height: 180px;
+}
+
+.hourglass-svg {
+    width: 120px;
+    height: 180px;
+}
+
+.frame-line {
+    fill: none;
+    stroke: #2f2f2f;
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+.sand-svg {
+    fill: #c8a15a;
+    stroke: none;
+}
+
+.menu {
+    position: fixed;
+    top: 54px;
+    right: 18px;
+    width: 180px;
+    padding: 8px;
+    background: #fffaf0;
+    border: 1px solid #d8cfc0;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.menu-item {
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    background: transparent;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #2f2f2f;
+}
+
+.menu-item:hover {
+    background: #ebe3d6;
+}
+
+.hidden {
+    display: none;
+}
+
+.screen {
+    height: 100vh;
+}
+
+.screen-content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+    padding: 24px;
+}
+
+.screen-title {
+    font-size: 32px;
+    margin: 0;
+}
+
+.screen-text {
+    max-width: 420px;
+    line-height: 1.5;
+    font-size: 18px;
+}
+
+.back-button {
+    margin-top: 16px;
+    padding: 10px 18px;
+    border: 1px solid #c8bca8;
+    border-radius: 8px;
+    background: #f4f1ea;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background: #ebe3d6;
+}
+
+.screen-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+}
+
+.form-block {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+
+.date-input {
+    font-size: 18px;
+    padding: 10px 14px;
+}
+
+.main-button,
+.back-button {
+    font-size: 18px;
+    padding: 10px 18px;
+    cursor: pointer;
+}
+
+.period-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.period-label {
+    font-size: 18px;
+}
+
+.countdown {
+    font-size: 56px;
+    letter-spacing: 2px;
+}
