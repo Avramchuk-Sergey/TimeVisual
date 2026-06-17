@@ -3,7 +3,7 @@ let countdownInterval = null;
 function renderActivePeriodScreen(period) {
     
 	const tasksHtml = (period.tasks || [])
-    .map(task => {
+    .map((task, index) => {
         if (task.type === "long") {
             return `
                 <li class="task-card task-card-long">
@@ -19,9 +19,14 @@ function renderActivePeriodScreen(period) {
             `;
         }
 
+        const completedClass = task.completed ? "task-card-completed" : "";
+        const checkboxText = task.completed ? "✓" : "";
+
         return `
-            <li class="task-card task-card-short">
-                <span class="task-checkbox"></span>
+            <li class="task-card task-card-short ${completedClass}">
+                <button class="task-checkbox" onclick="completeShortTask(${index})">
+                    ${checkboxText}
+                </button>
                 <span class="task-title">${task.title}</span>
             </li>
         `;
@@ -123,5 +128,25 @@ function addTaskToActivePeriod() {
 
     updateActivePeriod(period);
 
+    showActivePeriodScreen(period);
+}
+
+function completeShortTask(taskIndex) {
+    const period = getActivePeriod();
+
+    if (!period || !period.tasks || !period.tasks[taskIndex]) {
+        return;
+    }
+
+    const task = period.tasks[taskIndex];
+
+    if (task.type !== "short") {
+        return;
+    }
+
+    task.completed = true;
+    task.completedAt = new Date().toISOString();
+
+    updateActivePeriod(period);
     showActivePeriodScreen(period);
 }
