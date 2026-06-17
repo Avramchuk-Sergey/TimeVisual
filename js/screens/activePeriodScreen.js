@@ -1,6 +1,10 @@
 let countdownInterval = null;
 
 function renderActivePeriodScreen(period) {
+	
+	const completedShortTasksCount = (period.tasks || [])
+    .filter(task => task.type === "short" && task.completed)
+    .length;
     
 	const tasksHtml = (period.tasks || [])
     .map((task, index) => {
@@ -48,6 +52,12 @@ function renderActivePeriodScreen(period) {
                 onclick="addTaskToActivePeriod()">
                 Добавить задачу
             </button>
+			
+			<div class="effort-bank">
+			    <div class="effort-bank-title">Банк усилий</div>
+			    <div class="effort-bank-value">${completedShortTasksCount}</div>
+			    <div class="effort-bank-label">завершённых действий</div>
+			</div>
 
             <ul class="task-list">
                 ${tasksHtml}
