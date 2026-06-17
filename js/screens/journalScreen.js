@@ -3,7 +3,7 @@ function renderJournalScreen() {
 
     if (history.length === 0) {
         return `
-            <section class="screen">
+            <section class="screen journal-screen">
                 <div class="screen-content">
                     <h1 class="screen-title">Журнал</h1>
 
@@ -33,7 +33,7 @@ function renderJournalScreen() {
     }).join("");
 
     return `
-        <section class="screen">
+        <section class="screen journal-screen">
             <div class="screen-content">
                 <h1 class="screen-title">Журнал</h1>
 

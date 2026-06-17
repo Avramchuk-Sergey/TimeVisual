@@ -45,7 +45,7 @@ function finishActivePeriod(period) {
 
     const finishedPeriod = {
         ...period,
-        finishedAt: new Date().toISOString(),
+        finishedAt: period.endDate,
         status: "finished"
     };
 
