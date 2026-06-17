@@ -1,9 +1,26 @@
 let countdownInterval = null;
 
 function renderActivePeriodScreen(period) {
-    const tasksHtml = (period.tasks || [])
-        .map(task => `<li>${task.title}</li>`)
-        .join("");
+    
+	const tasksHtml = (period.tasks || [])
+    .map(task => {
+        if (task.type === "long") {
+            return `
+                <li class="task-item task-long">
+                    <span class="task-type">Длинная</span>
+                    <span>${task.title}</span>
+                </li>
+            `;
+        }
+
+        return `
+            <li class="task-item task-short">
+                <span class="task-checkbox">☐</span>
+                <span>${task.title}</span>
+            </li>
+        `;
+    })
+    .join("");
 
     return `
         <section class="screen-content">
@@ -77,12 +94,24 @@ function addTaskToActivePeriod() {
         return;
     }
 
+    const taskTypeInput = prompt(
+        "Тип задачи:\n1 — короткая\n2 — длинная"
+    );
+
+    let taskType = "short";
+
+    if (taskTypeInput === "2") {
+        taskType = "long";
+    }
+
     if (!period.tasks) {
         period.tasks = [];
     }
 
     period.tasks.push({
         title: taskTitle,
+        type: taskType,
+        completed: false,
         createdAt: new Date().toISOString()
     });
 
