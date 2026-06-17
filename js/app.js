@@ -1,5 +1,13 @@
 const screen = document.querySelector("#screen");
 
+function initializeAppLifetime() {
+    const appStartedAt = localStorage.getItem("appStartedAt");
+
+    if (!appStartedAt) {
+        localStorage.setItem("appStartedAt", new Date().toISOString());
+    }
+}
+
 function showScreen(screenName) {
     stopClock();
 
@@ -46,5 +54,6 @@ function showActivePeriodScreen(period) {
     initActivePeriodScreen(period);
 }
 
+initializeAppLifetime();
 initMenu();
 showScreen("home");
