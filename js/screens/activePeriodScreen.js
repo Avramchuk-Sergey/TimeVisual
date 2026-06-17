@@ -6,17 +6,23 @@ function renderActivePeriodScreen(period) {
     .map(task => {
         if (task.type === "long") {
             return `
-                <li class="task-item task-long">
-                    <span class="task-type">Длинная</span>
-                    <span>${task.title}</span>
+                <li class="task-card task-card-long">
+                    <div class="task-header">
+                        <span class="task-badge">Длинная</span>
+                        <span class="task-title">${task.title}</span>
+                    </div>
+
+                    <div class="task-progress">
+                        <div class="task-progress-fill"></div>
+                    </div>
                 </li>
             `;
         }
 
         return `
-            <li class="task-item task-short">
-                <span class="task-checkbox">☐</span>
-                <span>${task.title}</span>
+            <li class="task-card task-card-short">
+                <span class="task-checkbox"></span>
+                <span class="task-title">${task.title}</span>
             </li>
         `;
     })
