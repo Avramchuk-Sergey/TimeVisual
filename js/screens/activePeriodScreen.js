@@ -35,7 +35,7 @@ function initActivePeriodScreen(period) {
         if (secondsLeft <= 0) {
             countdownElement.textContent = "0";
             stopCountdown();
-            clearActivePeriod();
+            finishActivePeriod(period);
             return;
         }
 
