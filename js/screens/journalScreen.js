@@ -4,9 +4,18 @@ function renderJournalScreen() {
     if (history.length === 0) {
         return `
             <section class="screen">
-                <h1>Журнал</h1>
-                <p>Завершённых периодов пока нет.</p>
-                <button onclick="showScreen('home')">На главную</button>
+                <div class="screen-content">
+                    <h1 class="screen-title">Журнал</h1>
+
+                    <p class="screen-text">
+                        Завершённых периодов пока нет.
+                    </p>
+
+                    <button class="back-button"
+                            onclick="showScreen('home')">
+                        На главную
+                    </button>
+                </div>
             </section>
         `;
     }
@@ -25,13 +34,18 @@ function renderJournalScreen() {
 
     return `
         <section class="screen">
-            <h1>Журнал</h1>
+            <div class="screen-content">
+                <h1 class="screen-title">Журнал</h1>
 
-            <div class="journal-list">
-                ${historyItems}
+                <div class="journal-list">
+                    ${historyItems}
+                </div>
+
+                <button class="back-button"
+                        onclick="showScreen('home')">
+                    На главную
+                </button>
             </div>
-
-            <button onclick="showScreen('home')">На главную</button>
         </section>
     `;
 }

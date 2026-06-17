@@ -168,3 +168,22 @@ body {
     font-size: 56px;
     letter-spacing: 2px;
 }
+
+.journal-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.journal-item {
+    padding: 12px;
+    border: 1px solid #d8d2c6;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.4);
+}
+
+.journal-item h2 {
+    margin-top: 0;
+}
+//Проверка связи. Ава, прием
