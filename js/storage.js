@@ -54,3 +54,7 @@ function finishActivePeriod(period) {
     savePeriodHistory(history);
     clearActivePeriod();
 }
+
+function updateActivePeriod(period) {
+    saveActivePeriod(period);
+}

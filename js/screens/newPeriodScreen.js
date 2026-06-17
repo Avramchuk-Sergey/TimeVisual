@@ -48,7 +48,8 @@ function initNewPeriodScreen() {
         const period = {
             title: "Новый период",
             endDate: selectedValue,
-            createdAt: new Date().toISOString()
+            createdAt: new Date().toISOString(),
+			tasks: []
         };
 
         saveActivePeriod(period);

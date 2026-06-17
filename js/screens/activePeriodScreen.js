@@ -1,6 +1,10 @@
 let countdownInterval = null;
 
 function renderActivePeriodScreen(period) {
+    const tasksHtml = (period.tasks || [])
+        .map(task => `<li>${task.title}</li>`)
+        .join("");
+
     return `
         <section class="screen-content">
             <div class="clock" id="clock">00:00:00</div>
@@ -11,9 +15,15 @@ function renderActivePeriodScreen(period) {
 
             <p>секунд</p>
 
-            <button class="main-button">
+            <button
+                class="main-button"
+                onclick="addTaskToActivePeriod()">
                 Добавить задачу
             </button>
+
+            <ul class="task-list">
+                ${tasksHtml}
+            </ul>
 
             <button class="back-button" onclick="showScreen('home')">Назад</button>
         </section>
@@ -52,4 +62,31 @@ function stopCountdown() {
         clearInterval(countdownInterval);
         countdownInterval = null;
     }
+}
+
+function addTaskToActivePeriod() {
+    const period = getActivePeriod();
+
+    if (!period) {
+        return;
+    }
+
+    const taskTitle = prompt("Название задачи:");
+
+    if (!taskTitle) {
+        return;
+    }
+
+    if (!period.tasks) {
+        period.tasks = [];
+    }
+
+    period.tasks.push({
+        title: taskTitle,
+        createdAt: new Date().toISOString()
+    });
+
+    updateActivePeriod(period);
+
+    showActivePeriodScreen(period);
 }

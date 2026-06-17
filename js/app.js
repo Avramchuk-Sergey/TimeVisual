@@ -48,4 +48,3 @@ function showActivePeriodScreen(period) {
 
 initMenu();
 showScreen("home");
-// Этот комментарий я оставил специально для chatGPT
